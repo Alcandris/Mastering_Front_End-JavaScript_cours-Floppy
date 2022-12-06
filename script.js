@@ -6,10 +6,10 @@ img.src = "./media/flappy-bird-set.png";
 //general settings
 
 let gamePlaying = false; //toggle pour savoir si on est en train de jouer
-const gravity = 0.5; //gravité pour la difficulté
+const gravity = 0.3; //gravité pour la difficulté
 const speed = 3; // vitesse de l'oiseau
 const size = [51, 36]; // taille de l'oiseau
-const jump = -11.5; // diificulté du mouvement de l'oiseau
+const jump = -8; // diificulté du mouvement de l'oiseau
 const cTenth = canvas.width / 10;
 
 //pipe settings
