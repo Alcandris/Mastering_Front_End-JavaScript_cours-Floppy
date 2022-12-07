@@ -1,15 +1,18 @@
-const canvas = document.getElementById("canvas");
+//1-créer un render qui si genere en boucle :
+//-permet de deplacer les images (effet de vol, deplacement des tubes)
+
+const canvas = document.getElementById("canvas"); //
 const ctx = canvas.getContext("2d");
-const img = new Image();
+const img = new Image(); // fonctionnellement équivalent à document.createElement('img')
 img.src = "./media/flappy-bird-set.png";
 
 //general settings
-
-let gamePlaying = false; //toggle pour savoir si on est en train de jouer
-const gravity = 0.5; //gravité pour la difficulté
-const speed = 6.2; // vitesse de l'oiseau
+const largeurfenetre = window.width;
+let gamePlaying = false; //toggle pour savoir si on est en train de jouer, pour savoir quelle page afficher
+const gravityBasic = 0.5; //gravité pour la difficulté
+const speedBasic = 6.2; // vitesse de l'oiseau
 const size = [51, 36]; // taille de l'oiseau
-const jump = -11.5; // diificulté du mouvement de l'oiseau
+const jumpBasic = -11.5; // difficulté du mouvement de l'oiseau
 const cTenth = canvas.width / 10;
 
 //pipe settings
@@ -20,14 +23,23 @@ const pipeloc = () =>
   Math.random() * (canvas.height - (pipeGap + pipeWidth) - pipeWidth) +
   pipeWidth;
 
+let speed = 6.2;
+let gravity = 0.5;
+let jump = -11.5;
 let index = 0; //creéation de l'effet d'optique, gere l'animation
 let bestScore = 0;
 let curentScore = 0;
 let pipes = []; //poteaux
 let flight; //vol
 let flyHeight; //hauteur de vol
+let rapport;
 
 const setup = () => {
+  rapport = window.devicePixelRatio;
+  speed = speedBasic / rapport;
+  gravity = gravityBasic / rapport;
+  jump = jumpBasic / rapport;
+
   currentScore = 0;
   flight = jump;
   flyHeight = canvas.height / 2 - size[1] / 2;
@@ -165,3 +177,5 @@ setup();
 img.onload = render; //au chargement de l'image, on debute l'animation render
 document.addEventListener("click", () => (gamePlaying = true));
 window.onclick = () => (flight = jump);
+
+console.log(window.devicePixelRatio);
