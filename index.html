@@ -11,7 +11,61 @@
   </head>
 
   <body>
-    <header>
+    <header class="overflow">
+      <nav id="filter" class="">
+        <div class="toggle-btn" id="btnPara">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="filterlist">
+          <li>
+            <div>
+              <label for="vitesse">Vitesse</label>
+              <input
+                type="range"
+                id="vitesse"
+                value="6"
+                min="2"
+                max="15"
+                class="inputrange"
+                step="1"
+              />
+              <span class="rangeValue">6</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <label for="Saut">Saut</label>
+              <input
+                type="range"
+                id="Saut"
+                value="11"
+                min="8"
+                max="15"
+                class="inputrange"
+                step="1"
+              />
+              <span id="rangeValue">11</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <label for="gravite">Gravité</label>
+              <input
+                type="range"
+                id="gravite"
+                value="0.5"
+                min="0.2"
+                max="1.5"
+                class="inputrange"
+                step="0.1"
+              />
+              <span class="rangeValue">0.5</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
       <h1>le Oula Oula</h1>
       <div class="score-container">
         <div id="bestScore"></div>

@@ -1,23 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
   margin: 0;
   text-align: center;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   user-select: none;
+  max-width: 100vw;
 }
 header {
   margin: 0 auto;
   width: 431px;
+  position: relative;
 }
+.overflow {
+  overflow: hidden;
+}
+
 h1 {
   background: url(./media/flappy-bird-set.png) 0% 340px;
   padding: 1.2rem 0;
   margin: 0;
+  font-size: 28px;
 }
 .score-container {
   display: flex;
   justify-content: space-between;
   padding: 8px 6px;
-  background: #5EE270;
+  background: #5ee270;
+}
+
+#filter {
+  position: absolute;
+  top: 0%;
+  left: -260px;
+  transition: all 1s;
+  background: rgb(78, 192, 202);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.307);
+  padding: 5px;
+  cursor: pointer;
+  width: 250px;
+  transition: 0.5s ease-out;
+  z-index: 4;
+}
+
+li {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 18px;
+  left: 260px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+.toggle-btn span {
+  width: 35px;
+  height: 6px;
+  border-radius: 4px;
+  background: rgb(233, 252, 217);
+  display: block;
+  margin-top: 2px;
+  transition: 0.3s ease;
+}
+
+.cross-btn :first-child {
+  transform: translateY(8px) rotate(135deg);
+}
+.cross-btn :nth-child(2) {
+  visibility: hidden;
+  transition: 0s ease;
+}
+.cross-btn :last-child {
+  transform: translateY(-8px) rotate(-135deg);
+}
+.showFilter {
+  transform: translateX(260px);
 }

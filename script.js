@@ -1,6 +1,8 @@
 //1-créer un render qui si genere en boucle :
 //-permet de deplacer les images (effet de vol, deplacement des tubes)
-
+const btnParam = document.getElementById("btnPara");
+const filterBox = document.getElementById("filter");
+const header = document.querySelector("header");
 const canvas = document.getElementById("canvas"); //
 const ctx = canvas.getContext("2d");
 const img = new Image(); // fonctionnellement équivalent à document.createElement('img')
@@ -26,7 +28,7 @@ const pipeloc = () =>
 let speed = 6.2;
 let gravity = 0.5;
 let jump = -11.5;
-let index = 0; //creéation de l'effet d'optique, gere l'animation
+let index = 0; //création de l'effet d'optique, gere l'animation
 let bestScore = 0;
 let curentScore = 0;
 let pipes = []; //poteaux
@@ -35,10 +37,9 @@ let flyHeight; //hauteur de vol
 let rapport;
 
 const setup = () => {
-  rapport = window.devicePixelRatio;
-  speed = speedBasic / rapport;
-  gravity = gravityBasic / rapport;
-  jump = jumpBasic / rapport;
+  speed = document.getElementById("vitesse").value / 1;
+  gravity = document.getElementById("gravite").value / 1;
+  jump = -document.getElementById("Saut").value / 1;
 
   currentScore = 0;
   flight = jump;
@@ -175,7 +176,23 @@ const render = () => {
 
 setup();
 img.onload = render; //au chargement de l'image, on debute l'animation render
-document.addEventListener("click", () => (gamePlaying = true));
-window.onclick = () => (flight = jump);
+canvas.addEventListener("click", () => (gamePlaying = true));
+canvas.onclick = () => (flight = jump);
 
-console.log(window.devicePixelRatio);
+//********NAV**** */
+btnParam.addEventListener("click", () => {
+  filterBox.classList.toggle("showFilter");
+  btnPara.classList.toggle("cross-btn");
+  setTimeout(() => {
+    header.classList.toggle("overflow");
+  }, 500);
+  setup();
+});
+
+const arrayrange = document.querySelectorAll(".inputrange");
+
+arrayrange.forEach((range) => {
+  range.addEventListener("input", (e) => {
+    e.target.nextElementSibling.textContent = e.target.value;
+  });
+});
