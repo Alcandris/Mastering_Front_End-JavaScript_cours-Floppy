@@ -37,9 +37,11 @@ let flyHeight; //hauteur de vol
 let rapport;
 
 const setup = () => {
-  speed = document.getElementById("vitesse").value / 1;
-  gravity = document.getElementById("gravite").value / 1;
-  jump = -document.getElementById("Saut").value / 1;
+  rapport = window.devicePixelRatio;
+
+  speed = document.getElementById("vitesse").value / rapport;
+  gravity = document.getElementById("gravite").value / rapport;
+  jump = -document.getElementById("Saut").value / rapport;
 
   currentScore = 0;
   flight = jump;
